@@ -33,8 +33,9 @@ bot.on('message', message => {
   if (message.content.startsWith (prefix +"redeem")) {
 
     message.delete(1); //Removes public redeem message for security.
-  //Recommened to be on, will warn users to only activate codes in the bot's DM. (Will also send messages up on DM activation.)
-    //message.channel.send("Codes should only be redeemed in the bot's DM for security reasons." + message.author);
+  //Recommened to be on, will warn users to only activate codes in the bot's DM.
+  if(message.channel.type === "dm") return;  
+  message.channel.send("Codes should only be redeemed in the bot's DM for security reasons." + message.author);
   }
 
 
